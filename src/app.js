@@ -2,13 +2,15 @@ const port = 80
 const path = require('path')
 const express = require('express')
 const app = express()
+var cors = require('cors');
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
-const abc = path.join(__dirname,'../public')
-const xyz = path.join(__dirname,'../views')
-app.use(express.static(abc))
+const static_path = path.join(__dirname,'../public')
+const views_path = path.join(__dirname,'../views')
+app.use(express.static(static_path))
+app.use(cors());
 app.set('view engine', 'pug')
-app.set('views', xyz)
+app.set('views', views_path)
 app.get('/weather',(req,res)=>{
    if(!req.query.address){
        return res.send({error:'please provide address'})
