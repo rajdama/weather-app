@@ -5,8 +5,8 @@ const app = express()
 var cors = require('cors');
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
-const static_path = path.join(__dirname,'../public')
-const views_path = path.join(__dirname,'../views')
+const static_path = path.join(__dirname,'./public')
+const views_path = path.join(__dirname,'./views')
 app.use(express.static(static_path))
 app.use(cors());
 app.set('view engine', 'pug')
